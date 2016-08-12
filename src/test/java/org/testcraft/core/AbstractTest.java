@@ -5,6 +5,8 @@ import org.testcraft.pageObjects.HomePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.util.concurrent.TimeUnit;
+
 @ContextConfiguration(classes = {Context.class})
 public class AbstractTest {
 
@@ -15,6 +17,7 @@ public class AbstractTest {
         webDriver.manage().window().maximize();
         webDriver.manage().window().maximize();
         webDriver.get("http://www.google.co.uk");
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return new HomePage(webDriver);
     }
 }
