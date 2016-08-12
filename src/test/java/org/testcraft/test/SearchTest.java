@@ -17,19 +17,18 @@ public class SearchTest extends AbstractTest{
   HomePage homePage;
   SearchResultsPage searchResultsPage;
 
-
   @Given("^I'm on google\\.co\\.uk main page$")
-  public void imOnGoogleMainPage() throws Throwable {
+  public void openGoogleMainPage() throws Throwable {
     homePage = openHomePage();
   }
 
   @When("^I enter search phrase \"([^\"]*)\"$")
-  public void iEnterSearchPhrase(String searchPhrase) {
+  public void enterSearchPhrase(String searchPhrase) {
     homePage.enterSearchText(searchPhrase);
   }
 
   @And("^I click search$")
-  public void iClickSearch() {
+  public void clickSearch() {
     searchResultsPage = homePage.clickSearchButton();
   }
 

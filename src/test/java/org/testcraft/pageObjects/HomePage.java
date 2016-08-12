@@ -1,23 +1,30 @@
 package org.testcraft.pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.testcraft.core.AbstractPage;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends AbstractPage {
 
+  @FindBy(how = How.NAME, name = "q")
+  private WebElement searchField;
+
+  @FindBy(how = How.NAME, name = "btnG")
+  private WebElement searchButton;
+
   public HomePage(RemoteWebDriver remoteWebDriver) {
     super(remoteWebDriver);
+    PageFactory.initElements(remoteWebDriver, this);
   }
 
   public void enterSearchText(String input) {
-    WebElement searchField = driver.findElement(By.name("q"));
     searchField.sendKeys(input);
   }
 
   public SearchResultsPage clickSearchButton() {
-    WebElement searchButton = driver.findElement(By.name("btnG"));
     searchButton.click();
     return new SearchResultsPage(driver);
   }
