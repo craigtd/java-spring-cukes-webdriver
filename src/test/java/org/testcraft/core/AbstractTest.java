@@ -17,4 +17,8 @@ public class AbstractTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return new HomePage(webDriver);
     }
+
+    protected void quitDriver() {
+        webDriver.quit();
+    }
 }
